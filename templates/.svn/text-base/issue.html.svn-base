@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}{{issue.name}} in {{issue.project.name}} on GitBug{% endblock %}
+
+{% block header %}
+{% if not user %}
+    <div class="message">
+        <p><strong>Remember</strong>. You need to be <a href="{{link}}">logged in</a> to edit or close this issue.</p>
+    </div>
+{% endif %}
+<div id="header">
+    <h1>{{issue.name}} <span>from</span> <a href="/projects/{{issue.project.slug}}/">{{issue.project.name}}</a></h1>
+    <p>Created on {{issue.created_date|date:"jS F Y"}}</p>
+    {% if issue.fixed %}
+        <p>Fixed on {{issue.fixed_date|date:"jS F Y"}}</p>
+    {% endif %}
+    
+</div>
+{% endblock %}
+
+{% block script %}
+{% if owner %}
+<script type="text/javascript" charset="utf-8">
+    $(function(){
+        $('#changeissue').hide();
+        var more_link = $('<span class="fakelink">Edit or Close  issue</span>').click(function() {
+            $(this).hide();
+            $('#changeissue').fadeIn();
+        }).prependTo('#content');
+        $('#fixed_description').parent().hide();
+        $('#fixed').click(function() {
+            var n = $("#fixed:checked").length;
+            if (n > 0) {
+                $('#fixed_description').parent().fadeIn();
+            } else{
+                $('#fixed_description').parent().hide();
+            }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div id="content">
+
+{% if owner %}
+
+<form action="" method="post" id="changeissue">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="{{issue.name}}" class="txt"/>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description">{{issue.description}}</textarea>
+        <p>Supports Textile formatting</p>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{% if issue.email %}{{issue.email}}{% endif %}" class="txt"/>
+        <p>If you would like to be alerted when this bug is fixed.</p>
+    </div>
+    <div>
+        <label for="priority">Priority</label>
+		<select name="priority" id="email" class="txt">
+		  <option value="Normal">Normal</option>
+		  <option value="High">High</option>
+		  <option value="Low">Low</option>
+		</select>
+    </div>
+    <div>
+        <label for="fixed">Fixed</label>
+        <input type="checkbox" id="fixed" name="fixed" {% if issue.fixed %}checked="checked"{% endif %}/>
+    </div>
+    <div>
+        <label for="fixed_description">Describe fix</label>
+        <textarea id="fixed_description" name="fixed_description">{% if issue.fixed_description %}{{issue.fixed_description}}{% endif %}</textarea>
+        <p>Give some details about what the fix was, or why the issue was closed</p>
+    </div>
+    
+    <input type="submit" value="Submit" class="btn"/>
+    <a href="delete/">Delete</a>
+    <a href=".">Cancel</a>
+</form>
+
+{% endif %}
+
+<div id="txt">
+{{issue.html}}
+</div>
+
+{% if issues %}
+<div id="extra">
+    <h2>Other project issues</h2>
+    {% include "_issues_list.html" %}
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}

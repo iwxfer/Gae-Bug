@@ -1,0 +1,357 @@
+#filelist li {  
+display: inline;  
+}  
+#filelist li a {  
+font-size:13px;  
+text-decoration: none;  
+float:left;  
+padding: 10px;  
+}
+body, html {
+    background: #ECECEC;
+}
+a, .fakelink {
+    text-decoration: none;
+    color: #369CD6;
+}
+a:hover {
+    color: #3FB7FA
+}
+.fakelink {
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    color: #777;
+    padding: 5px 15px;
+    background-color: #369CD6;
+    color: #FFF;
+}
+.fakelink:hover {
+    background-color: #3FB7FA;
+}
+
+/* =Layout */
+
+#main {
+    padding: 20px 30px;
+    background: #FFF;
+    clear: both;
+    border-bottom: 1px solid #CCC;
+}
+#head {
+    float: left;
+    width: 100%;
+    background: #191919;
+}
+#greeting {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+#header {
+    margin-bottom: 25px;
+}
+#foot {
+    margin: 10px;       
+}
+#extra {
+    margin-top: 40px;
+}
+
+/* =Navigation */
+
+#head  {
+    font-size: 90%;    
+}
+#navigation ul li {
+    float: left;
+    border-left: 1px solid #232323;
+    padding: 5px 10px;
+}
+#greeting {
+    color: #555;  
+}
+#greeting a, #navigation ul li a {   
+    color: #999;
+    text-decoration: none;
+}
+#navigation ul li.this { 
+    background: #111;
+}
+#greeting a:hover, #navigation ul li a:hover {   
+    color: #FFF;
+}
+
+/* =Detail */
+
+#content ul.projects .desc {
+    font-size: 85%;
+    color: #666;
+    margin-top: 5px;   
+}
+#content ul.projects li a {
+    font-size: 110%;
+}
+#content ul.projects li span {
+    font-size: 85%;
+    color: #777;
+    display: block;
+    margin-top: 2px;    
+}
+#content ul.projects li p span {
+    margin : 0;
+    display: inline;
+    font-size: 100%;
+}
+#content ul.projects li {
+    float: left;
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 15px;
+}
+#content ul.projects li:hover {
+    border-color: #CCC;
+}
+#header h1 {
+    font-size: 200%;
+    font-weight: bold;
+}
+#header h1 span {
+    font-weight: normal;
+    color: #777;
+}
+#header p {
+    color: #777;
+    font-size: 90%;
+    margin-bottom: 5px;
+}
+#content table thead th {
+    font-weight: bold;
+}
+#content table {
+    width: 100%;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    margin: 30px 0;
+}
+#content table tbody tr {   
+    cursor: pointer;
+}
+#content table tbody tr:hover th, #content table tbody tr:hover td {
+    background: #DCDCDC;
+}
+#content table tr.alt th, #content table tr.alt td {
+    background: #ECECEC;
+}
+#content table tr.fixed, #content table tr.fixed a {
+    color: #777;
+}   
+#content table tr td, #content table tr th {
+    padding: 5px;
+}
+#content table tr td {
+    border-top: 1px solid #CCC;
+}
+#content table tr th {
+    border-top: 1px solid #CCC;
+}
+#txt {
+    margin: 20px 20px 10px 0;
+}
+#txt p {
+    margin-bottom: 1em;
+    font-family:monospace;
+}
+#txt ul, #txt ol {
+    margin-bottom: 1em;
+}
+#txt li {
+    margin-left: 1.5em;      
+}
+#txt ul li {
+    list-style-type: disc;
+}
+#txt ol li {
+    list-style-type: decimal;
+}
+#extra h2 {
+    margin-bottom: 10px;
+    color: #A7BDC8;
+    font-size: 120%;
+}
+#extra ol {
+    border-top: 1px solid #CCC;
+    padding-top: 10px;
+}
+#extra ol li {
+    margin-bottom: 5px;
+}
+#extra ol li a {
+}
+#extra ol li span {
+    color: #777;
+    font-size: 85%;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.intro {
+    margin: 20px 0;
+}
+.copy h2 {
+    margin-bottom: 10px;
+    color: #369CD6;
+    font-size: 120%;
+    font-weight: bold;
+}
+.copy pre {
+    line-height: 1.6;
+    margin-left: 20px;
+}
+.copy p, .copy pre {
+    margin-bottom: 1em;
+}
+#options ul li {
+    display: inline;
+    margin-right: 8px;
+}
+#options ul li.first {
+    padding-right: 10px;
+    border-right: 1px solid #CCC;
+}
+
+/* =Forms */
+
+form div {
+    margin-bottom: 5px;
+}
+form div input, form div textarea, form div select {
+    margin-left: 110px;
+}
+form div input.txt, form div textarea {
+    border: 1px solid #CCC;
+    border-top: 1px solid #999;
+    width: 300px;
+    padding: 3px;
+}
+form div textarea {
+    height: 100px;
+}
+form div input.btn {
+    margin-left: 10px;
+}
+form div label {
+    position: absolute;
+}
+form div p {
+    font-size: 85%;
+    margin: 3px 0 10px 110px;
+    color: #777;
+}
+#addproject {
+    margin-bottom: 30px;
+}
+#addproject label {
+    left: -9999em;
+}
+#addproject input {
+    margin-left: 0;
+}
+#changeissue, #deleteissue {
+    margin-top: 20px;
+}
+#addissue .btn, #changeissue .btn, #deleteissue .btn, #changeissue a, #deleteproject .btn {
+    margin-right: 10px;
+}
+#deleteissue p, #deleteproject p {
+    display: inline;
+    color: #777;
+    font-size: 90%;
+}
+
+/* =Foot */
+
+#foot {
+    font-size: 90%;
+    color: #999;
+}
+#foot a {
+    color: #999;
+    text-decoration: none;
+}
+/* =API */
+
+#api {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#api p {
+    margin-bottom: 5px;
+}
+#api blockquote {
+    border-left: 2px solid #BBB;
+    margin: 8px 0 8px 20px;
+    padding-left: 10px;
+    font-style: italic;
+}
+#api .key {
+    border: 1px solid #CCC;
+    background: #ECECEC;
+    padding: 10px;
+    margin-top: 10px;
+}
+#api .key {
+}
+
+/* =Home */
+
+#header h1 span {
+    color: #AAA;
+}
+.home #main .inner, .home #header  {
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home .col {
+    width: 355px;
+    float: left;
+    margin-bottom: 20px;
+}
+.home .col h2 {
+    margin-bottom: 10px;
+    color: #A7BDC8;
+    font-size: 150%; 
+}
+.home p.btn {
+    margin-top: 30px;   
+}
+.home p.btn a {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    color: #777;
+    padding: 5px 15px;
+    background-color: #369CD6;
+    color: #FFF;
+}
+.home p.btn a:hover {
+    background-color: #3FB7FA;
+}
+.home #primary {
+    padding-right: 10px;
+}
+.home #secondary {
+    padding-left: 10px;
+}
+.message {
+    padding: 10px;
+    border: 1px solid #CCC;
+    background: #ECECEC;
+    margin-bottom: 10px;
+}
+.message strong {
+    font-weight: bold;
+}

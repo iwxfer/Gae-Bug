@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}{{project.name}} on GitBug{% endblock %}
+
+{% block header %}
+    {% if not user %}
+        <div class="message">
+            <p><strong>Remember</strong>. You need to be <a href="{{link}}">logged in</a> to change the project settings or for API access if you own this project.</p>
+        </div>
+    {% endif %}
+    <div id="header">
+        <h1>{{project.name}}</h1>
+
+        <p>Created on {{project.created_date|date:"jS F Y"}} </p>
+        {% if project.description %}<div class="desc">{{project.html}}</div>{% endif %}
+        {% if project.url %}<p><a href="{{project.url}}">{{project.url}}</a></p>{% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" charset="utf-8">
+    $(function(){
+        $('#addissue').hide();
+        $('#upload').hide();
+        
+        var more_link = $('<span class="fakelink">Add issue</span>').click(function() {
+            $(this).hide();
+            $('#addissue').fadeIn();
+        }).prependTo('#content');
+        $('tbody tr a').parent().parent().click(function() {
+            window.location = $(this).find('a').attr('href');
+        });
+        
+        var more_link1 = $('<span class="fakelink">Upload File</span>').click(function() {
+            $(this).hide();
+            $('#upload').fadeIn();
+        }).prependTo('#content');
+        $('tbody tr a').parent().parent().click(function() {
+            window.location = $(this).find('a').attr('href');
+        });
+    });
+    
+</script>
+{% endblock %}
+
+{% block feed %}
+<link rel="alternate" type="application/rss+xml" title="Issues for {{project.name}} on GitBug" href="/projects/{{project.slug}}.rss" />
+<link rel="alternate" type="application/rss+xml" title="Open issues for {{project.name}} on GitBug" href="/projects/{{project.slug}}.rss?open=1" />
+<link rel="alternate" type="application/rss+xml" title="Closed issues for {{project.name}} on GitBug" href="/projects/{{project.slug}}.rss?closed=1" />
+{% endblock %}
+
+{% block projects_nav %} class="this"{% endblock %}
+
+{% block content %}
+<div id="content">
+
+<br />
+<form action="" method="post" id="addissue">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="txt"/>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+        <p>Supports Textile formatting</p>
+    </div>
+    <div>
+        <label for="priority">Priority</label>
+		<select name="priority" id="email" class="txt">
+		  <option value="Normal">Normal</option>
+		  <option value="High">High</option>
+		  <option value="Low">Low</option>
+		</select>
+    </div>
+
+    {% if user %}
+    <div>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{{user.email}}"  class="txt"/>
+        <p>If you would like to be alerted when this bug is fixed.</p>
+    </div>
+    {% endif %}
+    <input type="submit" value="Add issue" class="btn"/>
+    <a href=".">Cancel</a>
+</form>
+
+<br />
+<form action="upload" method="post" id="upload" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+    <a href=".">Cancel</a>
+</form>
+{% include "_issues.html" %}
+
+{% if owner %}
+
+<div id="options">
+    <ul>
+        <li class="first"><a href="delete/">Delete project</a></li>
+        <li><a href="settings/">Settings</a></li>
+    </ul>
+</div>
+<div id="filelist">
+	<span>Files:</span>
+    <ul>
+	{% for f in files %}
+        <li><a href="file/{{f.key.id}}/{{f.name}}">{{f.name}}</a></li>
+	{% endfor %}
+    </ul>
+</div>
+
+<div id="api">
+    <p>You can close bugs via a <a href="http://github.com">GitHub</a> style web hook. You'll need the following <em>details</em> and to include the issue identifier (eg. #gitbug1234) in the commit message. For instance:</p>
+    <blockquote><p>changed settings file which fixes bug #gitbug52</p></blockquote>
+    <div class="key">
+        <p><code>{{project.key}}</code></p>
+        <a href="http://gitbug.appspot.com/projects/{{project.slug}}/hook?key={{project.key}}">http://gitbug.appspot.com/projects/{{project.slug}}/hook?key={{project.key}}</a>
+    </div>
+</div>
+
+
+{% endif %}
+
+</div>
+{% endblock %}

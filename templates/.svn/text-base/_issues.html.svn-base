@@ -1,0 +1,42 @@
+{% if issues.count %}
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Identifier</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for issue in issues %}
+    <tr class="{% if not forloop.counter|divisibleby:2 %}alt {% endif %}{% if issue.fixed %}fixed{% endif %}">
+        <th scope="row">
+            <a href="/projects{{issue.internal_url}}">{{issue.name}}</a>
+        </th>
+        <td style="color:
+				{%ifequal issue.priority "High"%}red;{% endifequal %}
+				{%ifequal issue.priority "Normal"%}blue;{% endifequal %}
+				{%ifequal issue.priority "Low"%}green;{% endifequal %}">
+            {{issue.priority}}
+        </td>
+        <td>#gitbug{{issue.identifier}}
+        </td>
+        <td>
+            {{issue.html|striptags|truncatewords:10}}
+        </td>
+        <td>
+            {{issue.created_date|date:"jS F Y"}}
+        </td>
+        <td>
+            {% if issue.fixed %}Fixed{% else %}Open{% endif %}
+        </td>
+    </tr>    
+{% endfor %}
+    </tbody>
+    </table>
+{% else %}
+    <p class="intro">Welcome to GitBug. You project has been created. You can get on and add Issues straight away.</p>
+{% endif %}

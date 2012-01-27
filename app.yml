@@ -1,0 +1,24 @@
+application: 123mvo
+version: 2 
+runtime: python
+api_version: 1 
+
+handlers:
+- url: /assets
+  static_dir: assets
+  
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py 
+  login: admin
+
+- url: /favicon.ico
+  static_files: assets/images/favicon.ico
+  upload: assets/images/favicon.ico
+
+- url: /admin/.*
+  script: admin.py 
+  login: admin
+  
+- url: /.*
+  script: main.py
+

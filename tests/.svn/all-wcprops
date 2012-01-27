@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/fercode1_python/!svn/ver/3/gaebug/tests
+END
+lib_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/fercode1_python/!svn/ver/3/gaebug/tests/lib_tests.py
+END
+admin_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/fercode1_python/!svn/ver/3/gaebug/tests/admin_tests.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/fercode1_python/!svn/ver/3/gaebug/tests/__init__.py
+END
+settings_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/fercode1_python/!svn/ver/3/gaebug/tests/settings_tests.py
+END
+functional_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/fercode1_python/!svn/ver/3/gaebug/tests/functional_tests.py
+END
