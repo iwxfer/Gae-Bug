@@ -1,7 +1,6 @@
-application: 123mvo
-version: 2 
-runtime: python
+runtime: python27
 api_version: 1 
+threadsafe: false
 
 handlers:
 - url: /assets
@@ -22,3 +21,6 @@ handlers:
 - url: /.*
   script: main.py
 
+libraries:
+- name: django
+  version: "1.2"

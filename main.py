@@ -19,7 +19,7 @@ import settings
 from models import Project, Issue, DatastoreFile
 from ext.PyRSS2Gen import RSS2, RSSItem
 
-webapp.template.register_template_library('filters')
+webapp.template.register_template_library('tags.filters')
 
 # regex for the patter to look for in the webhooks
 GITBUG = re.compile('#gitbug[0-9]+')
